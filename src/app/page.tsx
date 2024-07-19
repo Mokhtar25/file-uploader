@@ -1,6 +1,7 @@
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 import Link from "next/link";
 import { getUserImages } from "~/server/queries";
+import MultiUploader from "./_comp/UploadButtonCustom";
 
 export const dynamic = "force-dynamic";
 
@@ -9,6 +10,7 @@ export default async function HomePage() {
     <main className="">
       <SignedOut>please sign in above</SignedOut>
       <SignedIn>
+        <MultiUploader />
         <Images />
       </SignedIn>
     </main>

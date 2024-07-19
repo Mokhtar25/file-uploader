@@ -1,0 +1,2 @@
+user a pdf viewer lib to handel view
+ctl + space to see options
