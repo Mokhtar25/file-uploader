@@ -3,8 +3,12 @@ import { getImageById } from "~/server/queries";
 export default async function FullPageFile({ id }: { id: number }) {
   const image = await getImageById(id);
   return (
-    <div>
-      <img src={image.url} alt={image.name} />
+    <div className="absolute inset-0 left-0 right-0 top-20 mx-auto flex h-3/4 w-3/4 min-w-0 flex-shrink items-center justify-center rounded bg-red-400">
+      <img
+        src={image.url}
+        alt={image.name}
+        className="flex-shrink object-contain"
+      />
     </div>
   );
 }
