@@ -1,4 +1,6 @@
 import { getImageById } from "~/server/queries";
+import Model from "./Model";
+import FullPageFile from "~/comp/FullPageFile";
 
 export default async function PhotoModel({
   params: { id: photoId },
@@ -8,11 +10,9 @@ export default async function PhotoModel({
   const idAsNum = parseInt(photoId);
   if (Number.isNaN(idAsNum)) throw new Error("Invalid photo id");
 
-  const image = await getImageById(idAsNum);
   return (
-    <div>
-      {" "}
-      <img src={image.url} alt={image.name} />
-    </div>
+    <Model>
+      <FullPageFile id={idAsNum} />
+    </Model>
   );
 }
