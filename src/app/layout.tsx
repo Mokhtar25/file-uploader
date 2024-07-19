@@ -1,7 +1,9 @@
 import "~/styles/globals.css";
+import { ClerkProvider } from "@clerk/nextjs";
 
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
+import TopNav from "./_comp/TopNav";
 
 export const metadata: Metadata = {
   title: "File-uploader",
@@ -13,21 +15,14 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${GeistSans.variable}`}>
-      <body>
-        <TopNav />
+    <ClerkProvider>
+      <html lang="en" className={`${GeistSans.variable}`}>
+        <body>
+          <TopNav />
 
-        {children}
-      </body>
-    </html>
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
-
-const TopNav = () => {
-  return (
-    <nav className="flex h-12 items-center justify-between bg-slate-100 px-8 text-xl">
-      <span className="text-2xl">File Uploader</span>
-      <span> Sign in</span>
-    </nav>
-  );
-};
