@@ -17,7 +17,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+  model,
+}: Readonly<{ children: React.ReactNode; model: React.ReactNode }>) {
   return (
     <ClerkProvider>
       <html lang="en" className={`${GeistSans.variable}`}>
@@ -34,6 +35,8 @@ export default function RootLayout({
           <TopNav />
 
           {children}
+          {model}
+          <div id="model-root"></div>
         </body>
       </html>
     </ClerkProvider>
