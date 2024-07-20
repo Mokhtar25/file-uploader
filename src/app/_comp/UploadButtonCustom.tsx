@@ -1,5 +1,6 @@
 "use client";
 import { useDropzone } from "@uploadthing/react";
+import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
 
 import { generateClientDropzoneAccept } from "uploadthing/client";
@@ -7,6 +8,7 @@ import { generateClientDropzoneAccept } from "uploadthing/client";
 import { useUploadThing } from "~/utils/uploadthing";
 
 export default function MultiUploader() {
+  const router = useRouter();
   const [files, setFiles] = useState<File[]>([]);
   const onDrop = useCallback((acceptedFiles: File[]) => {
     setFiles(acceptedFiles);
@@ -14,7 +16,7 @@ export default function MultiUploader() {
 
   const { startUpload, permittedFileInfo } = useUploadThing("imageUploader", {
     onClientUploadComplete: () => {
-      alert("uploaded successfully!");
+      router.refresh();
     },
     onUploadError: () => {
       alert("error occurred while uploading");
@@ -35,10 +37,10 @@ export default function MultiUploader() {
 
   return (
     <div {...getRootProps()}>
-      <input {...getInputProps()} />
-      <div>
+      <input {...getInputProps()} className="bg-blue-500" />
+      <div className="bg-green-400">
         {files.length > 0 && (
-          <button onClick={() => startUpload(files)}>
+          <button className="bg-red-400" onClick={() => startUpload(files)}>
             Upload {files.length} files
           </button>
         )}
