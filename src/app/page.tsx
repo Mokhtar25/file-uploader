@@ -20,11 +20,11 @@ export default async function HomePage() {
 const Images = async () => {
   const data = await getUserImages();
   return (
-    <div className="flex flex-wrap">
+    <div className="grid grid-cols-3">
       {data.map((e) => (
         <Link href={`/img/${e.id}`} key={e.id}>
           <div className="flex size-96 flex-col">
-            <img src={e.url} alt={e.name} />
+            <img src={e.url} alt={e.name} className="object-contain" />
             <span>{e.name}</span>
           </div>
         </Link>
