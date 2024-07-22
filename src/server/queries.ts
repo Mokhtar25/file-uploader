@@ -21,7 +21,6 @@ export async function getImageById(id: number) {
   if (!user.userId) throw new Error("Unauthorized");
 
   const data = await db.select().from(files).where(eq(files.id, id));
-  console.log(data);
   if (data.length === 0 || !data) throw new Error("No image found");
 
   if (data[0]?.userId !== user.userId) throw new Error("Unauthorized");

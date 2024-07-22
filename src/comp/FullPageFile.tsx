@@ -7,7 +7,7 @@ export default async function FullPageFile({ id }: { id: number }) {
       <img
         src={image.url}
         alt={image.name}
-        className="flex-shrink object-contain"
+        className="size-96 flex-shrink object-contain"
       />
     </div>
   );
