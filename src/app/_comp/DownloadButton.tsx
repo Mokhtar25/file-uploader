@@ -6,11 +6,13 @@ import { Button } from "~/components/ui/button";
 interface PropsDownloadButton {
   src: string;
   imageName: string;
+  className: string;
 }
 
 export default function DownloadButton({
   src,
   imageName,
+  className,
 }: PropsDownloadButton) {
   async function retrieveFileBlob() {
     const file = await fetch(src);
@@ -24,5 +26,9 @@ export default function DownloadButton({
     link.remove();
   }
 
-  return <Button onClick={retrieveFileBlob}>Download</Button>;
+  return (
+    <Button className={className} onClick={retrieveFileBlob}>
+      Download
+    </Button>
+  );
 }

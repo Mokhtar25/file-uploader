@@ -1,6 +1,6 @@
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 import Link from "next/link";
-import { deleteImageByKey, getUserImages } from "~/server/queries";
+import { deleteFilesByKey, getUserFiles } from "~/server/queries";
 import MultiUploader from "./_comp/UploadButtonCustom";
 import { Button } from "~/components/ui/button";
 import DownloadButton from "./_comp/DownloadButton";
@@ -20,7 +20,7 @@ export default async function HomePage() {
 }
 
 const Images = async () => {
-  const data = await getUserImages();
+  const data = await getUserFiles();
   return (
     <div className="grid grid-cols-3">
       {data.map((e) => (
@@ -34,13 +34,20 @@ const Images = async () => {
           <form
             action={async () => {
               "use server";
-              await deleteImageByKey(e.key);
+              await deleteFilesByKey(e.key);
               console.log("done");
             }}
           >
-            <Button type="submit"> Delete</Button>
+            <Button variant={"destructive"} type="submit">
+              {" "}
+              Delete
+            </Button>
           </form>
-          <DownloadButton src={e.url} imageName={e.name} />
+          <DownloadButton
+            className="h-12 w-28"
+            src={e.url}
+            imageName={e.name}
+          />
         </div>
       ))}
     </div>

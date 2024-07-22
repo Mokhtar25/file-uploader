@@ -7,7 +7,7 @@ import { redirect } from "next/navigation";
 
 import { utapi } from "~/app/api/uploadthing/core";
 
-export async function getUserImages() {
+export async function getUserFiles() {
   const user = auth();
 
   if (!user.userId) throw new Error("Unauthorized");
@@ -18,7 +18,7 @@ export async function getUserImages() {
   return data;
 }
 
-export async function getImageById(id: number) {
+export async function getFilesById(id: number) {
   const user = auth();
 
   if (!user.userId) throw new Error("Unauthorized");
@@ -31,7 +31,7 @@ export async function getImageById(id: number) {
   return data[0];
 }
 
-export async function deleteImageByKey(id: string) {
+export async function deleteFilesByKey(id: string) {
   const user = auth();
 
   if (!user.userId) throw new Error("Unauthorized");
