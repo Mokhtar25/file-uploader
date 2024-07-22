@@ -34,6 +34,7 @@ export default function MultiUploader() {
     onDrop,
     accept: fileTypes ? generateClientDropzoneAccept(fileTypes) : undefined,
   });
+  // this is very simple the other stuff is for adding multipal files and drag and drop function
 
   return (
     <div {...getRootProps()}>
