@@ -5,6 +5,7 @@ import { db } from "~/server/db";
 import { files } from "~/server/db/schema";
 import { ratelimit } from "~/server/ratelimit";
 
+import { UTApi } from "uploadthing/server";
 const f = createUploadthing();
 
 // FileRouter for your app, can contain multiple FileRoutes
@@ -33,6 +34,7 @@ export const ourFileRouter = {
       // This code RUNS ON YOUR SERVER after upload
       console.log("Upload complete for userId:", metadata.userId);
       await db.insert(files).values({
+        key: file.key,
         url: file.url,
         userId: metadata.userId,
         name: file.name,
@@ -46,3 +48,4 @@ export const ourFileRouter = {
 } satisfies FileRouter;
 
 export type OurFileRouter = typeof ourFileRouter;
+export const utapi = new UTApi();

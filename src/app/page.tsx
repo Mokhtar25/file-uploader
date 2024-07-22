@@ -1,9 +1,8 @@
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 import Link from "next/link";
-import { deleteImageById, getUserImages } from "~/server/queries";
+import { deleteImageByKey, getUserImages } from "~/server/queries";
 import MultiUploader from "./_comp/UploadButtonCustom";
 import { Button } from "~/components/ui/button";
-import { MouseEventHandler } from "react";
 
 export const dynamic = "force-dynamic";
 
@@ -34,7 +33,7 @@ const Images = async () => {
           <form
             action={async () => {
               "use server";
-              await deleteImageById(e.id);
+              await deleteImageByKey(e.key);
               console.log("done");
             }}
           >
