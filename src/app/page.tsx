@@ -5,6 +5,7 @@ import MultiUploader from "./_comp/UploadButtonCustom";
 import { Button } from "~/components/ui/button";
 import DownloadButton from "./_comp/DownloadButton";
 import { FilesLine } from "./_comp/FilesLine";
+import LinkButton from "./_comp/LinkButton";
 
 export const dynamic = "force-dynamic";
 //<MultiUploader />
@@ -34,16 +35,12 @@ const Files = async () => {
                 console.log("done");
               }}
             >
-              <Button variant={"destructive"} type="submit">
-                {" "}
+              <Button variant={"outline"} type="submit">
                 Delete
               </Button>
             </form>
-            <DownloadButton
-              className="h-12 w-28"
-              src={e.url}
-              imageName={e.name}
-            />
+            <DownloadButton className="" src={e.url} imageName={e.name} />
+            <LinkButton />
           </FilesLine>
         </div>
       ))}
@@ -52,6 +49,7 @@ const Files = async () => {
     </div>
   );
 };
+
 //<div key={e.id} className="flex flex-col">
 //<Link href={`/img/${e.id}`} key={e.id}>
 //<div className="flex size-96 flex-col">
