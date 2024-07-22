@@ -14,7 +14,7 @@ import { ourFileRouter } from "./api/uploadthing/core";
 export const metadata: Metadata = {
   title: "File-uploader",
   description: "made for the Odin Project",
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
+  icons: [{ rel: "icon", url: "/favicon.png" }],
 };
 
 export default function RootLayout({
