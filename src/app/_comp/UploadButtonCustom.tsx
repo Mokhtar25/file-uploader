@@ -44,20 +44,19 @@ export default function MultiUploader() {
   });
   // this is very simple the other stuff is for adding multipal files and drag and drop function
 
-  return (
-    <div {...getRootProps()}>
-      <input {...getInputProps()} className="bg-blue-500" />
-      <div className="bg-green-400">
-        {files.length > 0 && (
-          <button className="bg-red-400" onClick={() => startUpload(files)}>
-            Upload {files.length} files
-          </button>
-        )}
-      </div>
-      Drop files here!
-    </div>
-  );
+  return <div className="size-40 bg-sky-700"></div>;
 }
+//<div {...getRootProps()}>
+//<input {...getInputProps()} className="bg-blue-500" />
+//<div className="bg-green-400">
+//{files.length > 0 && (
+//    <button className="bg-red-400" onClick={() => startUpload(files)}>
+//    Upload {files.length} files
+//    </button>
+//)}
+//</div>
+//Drop files here!
+//</div>
 
 const FileUp = () => {
   return (

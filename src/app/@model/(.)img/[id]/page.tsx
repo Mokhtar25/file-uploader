@@ -1,4 +1,3 @@
-import { getImageById } from "~/server/queries";
 import Model from "./Model";
 import FullPageFile from "~/comp/FullPageFile";
 
