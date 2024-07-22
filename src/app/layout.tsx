@@ -7,6 +7,8 @@ import { type Metadata } from "next";
 import TopNav from "./_comp/TopNav";
 import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 
+import { Toaster } from "~/components/ui/sonner";
+
 import { extractRouterConfig } from "uploadthing/server";
 import { ourFileRouter } from "./api/uploadthing/core";
 export const metadata: Metadata = {
@@ -39,6 +41,7 @@ export default function RootLayout({
           </div>
           {model}
           <div id="model-root"></div>
+          <Toaster />
         </body>
       </html>
     </ClerkProvider>

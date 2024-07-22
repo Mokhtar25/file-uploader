@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
 
 import { generateClientDropzoneAccept } from "uploadthing/client";
+import { toast } from "sonner";
 
 import { useUploadThing } from "~/utils/uploadthing";
 
@@ -16,13 +17,19 @@ export default function MultiUploader() {
 
   const { startUpload, permittedFileInfo } = useUploadThing("imageUploader", {
     onClientUploadComplete: () => {
+      toast.dismiss("upload-start");
       router.refresh();
+      setFiles([]);
+      toast("Upload Complete");
     },
     onUploadError: () => {
       alert("error occurred while uploading");
     },
     onUploadBegin: () => {
-      alert("upload has begun");
+      toast("Uploading", {
+        duration: 90000,
+        id: "upload-start",
+      });
     },
   });
 
