@@ -22,10 +22,9 @@ export default function MultiUploader() {
       setFiles([]);
       toast("Upload Complete");
     },
-    onUploadError: (error) => {
+    onUploadError: () => {
       toast.dismiss("upload-start");
-      toast("error has ocurred");
-      console.log(error);
+      toast.error("an error has occurred");
     },
     onUploadBegin: () => {
       toast(<FileUp />, {

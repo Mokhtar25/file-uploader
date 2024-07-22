@@ -1,2 +1,12 @@
 user a pdf viewer lib to handel view
 ctl + space to see options
+
+
+fix layout and images res
+infinate scrolling maybe
+folders and albums 
+selecting images
+downloading 
+sharing a file with someone with a timed token
+
+

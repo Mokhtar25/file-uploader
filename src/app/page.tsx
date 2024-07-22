@@ -3,6 +3,7 @@ import Link from "next/link";
 import { deleteImageByKey, getUserImages } from "~/server/queries";
 import MultiUploader from "./_comp/UploadButtonCustom";
 import { Button } from "~/components/ui/button";
+import DownloadButton from "./_comp/DownloadButton";
 
 export const dynamic = "force-dynamic";
 
@@ -39,6 +40,7 @@ const Images = async () => {
           >
             <Button type="submit"> Delete</Button>
           </form>
+          <DownloadButton src={e.url} imageName={e.name} />
         </div>
       ))}
     </div>
