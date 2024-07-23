@@ -29,7 +29,7 @@ export const FilesLine = async ({
           <RenderIcon name={name} />
           <span
             title={name}
-            className="max-w-3/4 line-clamp-1 text-ellipsis hover:underline"
+            className="line-clamp-1 w-96 text-ellipsis hover:underline"
           >
             {name}
           </span>
