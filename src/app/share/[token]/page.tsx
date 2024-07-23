@@ -13,10 +13,10 @@ const FileShareView = async ({
   const data = await getDataFromToken(token);
   console.log("data from await get data from token", data);
   if (!data || data.expired === true) {
-    redirect("/");
+    redirect("/login");
   }
 
-  return <FullPageFile id={data.fileId} share />;
+  return <FullPageFile id={data.fileId} share={true} />;
 };
 
 export default FileShareView;
