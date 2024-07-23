@@ -25,9 +25,12 @@ export const FilesLine = async ({
         href={`/img/${id}`}
         className="flex items-center gap-2 overflow-clip"
       >
-        <div className="flex items-center gap-2 overflow-clip">
+        <div className="flex max-w-96 items-center gap-2">
           <RenderIcon name={name} />
-          <span className="overflow-clip text-wrap hover:underline">
+          <span
+            title={name}
+            className="max-w-3/4 line-clamp-1 text-ellipsis hover:underline"
+          >
             {name}
           </span>
         </div>

@@ -17,16 +17,14 @@ export default async function HomePage() {
   if (!user.userId) redirect("/signin");
 
   return (
-    <main className="">
+    <main className="flex h-full">
       <SignedIn>
-        <section className="mx-8 flex items-center justify-between">
-          <div className="text-4xl font-medium">your files</div>
+        <section className="flex flex-col items-center justify-between border-r-2 border-black/25 px-8">
+          <div className="mt-8 text-4xl font-medium">your files</div>
           <MultiUploader />
         </section>
 
-        <section>
-          <Files />
-        </section>
+        <Files />
       </SignedIn>
     </main>
   );
@@ -40,7 +38,7 @@ const objectWithoutKey = (e: FilesType) => {
 const Files = async () => {
   const data = await getUserFiles();
   return (
-    <div className="h-96 w-full bg-slate-200">
+    <div className="flex w-full flex-grow flex-col overflow-x-clip bg-slate-200">
       {data.map((e) => (
         <div key={e.key} className="">
           <FilesLine {...objectWithoutKey(e)}>
@@ -59,6 +57,11 @@ const Files = async () => {
           </FilesLine>
         </div>
       ))}
+      {data.length === 0 && (
+        <span className="my-52 self-center text-5xl text-slate-400">
+          Add files to start !{" "}
+        </span>
+      )}
     </div>
   );
 };
