@@ -2,17 +2,17 @@ import { type InferSelectModel } from "drizzle-orm";
 import Link from "next/link";
 import type { files } from "~/server/db/schema";
 
-type FilesType = InferSelectModel<typeof files>;
+export type FilesType = InferSelectModel<typeof files>;
 type FileType = "image" | "pdf" | "other";
 
-interface PropsLine extends FilesType {
+interface PropsLineBefore extends FilesType {
   children: React.ReactNode;
 }
+type PropsLine = Omit<PropsLineBefore, "key">;
 
 export const FilesLine = async ({
   url,
   name,
-  key,
   createdAt,
   updatedAt,
   id,

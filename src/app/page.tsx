@@ -4,8 +4,9 @@ import { deleteFilesByKey, getUserFiles } from "~/server/queries";
 import MultiUploader from "./_comp/UploadButtonCustom";
 import { Button } from "~/components/ui/button";
 import DownloadButton from "./_comp/DownloadButton";
-import { FilesLine } from "./_comp/FilesLine";
+import { FilesLine, FilesType } from "./_comp/FilesLine";
 import LinkButton from "./_comp/LinkButton";
+import { FilesType } from "./_comp/FilesLine";
 
 export const dynamic = "force-dynamic";
 //<MultiUploader />
@@ -21,13 +22,18 @@ export default async function HomePage() {
   );
 }
 
+const util = (e: FilesType) => {
+  const clone = (({ key: _, ...o }) => o)(e);
+  return clone;
+};
+
 const Files = async () => {
   const data = await getUserFiles();
   return (
     <div className="h-96 w-full bg-slate-200">
       {data.map((e) => (
         <div key={e.key} className="">
-          <FilesLine {...e}>
+          <FilesLine {...util(e)}>
             <form
               action={async () => {
                 "use server";
