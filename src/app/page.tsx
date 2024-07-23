@@ -6,11 +6,16 @@ import DownloadButton from "./_comp/DownloadButton";
 import { FilesLine } from "./_comp/FilesLine";
 import LinkButton from "./_comp/LinkButton";
 import type { FilesType } from "./_comp/FilesLine";
+import { redirect } from "next/navigation";
+import { auth } from "@clerk/nextjs/server";
 
 export const dynamic = "force-dynamic";
 //<MultiUploader />
 
 export default async function HomePage() {
+  const user = auth();
+  if (!user.userId) redirect("/signin");
+
   return (
     <main className="">
       <SignedOut>please sign in above</SignedOut>

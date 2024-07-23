@@ -27,9 +27,14 @@ export default function DownloadButton({
   }
 
   return (
-    <div onClick={retrieveFileBlob} className="hover:cursor-pointer">
+    <Button
+      onClick={retrieveFileBlob}
+      variant={"outline"}
+      size={"icon"}
+      className="hover:cursor-pointer"
+    >
       <DownloadSvg />
-    </div>
+    </Button>
   );
 }
 

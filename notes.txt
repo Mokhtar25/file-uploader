@@ -10,3 +10,5 @@ downloading
 sharing a file with someone with a timed token
 
 
+handel the error correctly 
+

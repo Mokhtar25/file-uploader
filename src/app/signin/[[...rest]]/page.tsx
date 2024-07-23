@@ -7,8 +7,14 @@ export default function page() {
 
   if (user.userId) redirect("/");
   return (
-    <div>
-      <SignIn />
+    <div className="absolute inset-0 flex h-screen w-screen items-center justify-center gap-16 bg-slate-100">
+      <div className="h-[460px] w-[400px]">
+        <SignIn />
+      </div>
+      <div className="flex size-96 flex-col gap-12 rounded text-5xl font-bold text-slate-800 shadow-black">
+        <span>Easy and secure access to your content</span>
+        <span className="text-3xl text-slate-500">Try it Today for free</span>
+      </div>
     </div>
   );
 }
