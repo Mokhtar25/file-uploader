@@ -1,9 +1,18 @@
+"use client";
 import { Button } from "~/components/ui/button";
 
-export default function LinkButton() {
+import { getToken } from "~/utils/token";
+export default function LinkButton({ id }: { id: number }) {
+  const days = 2;
+  const click = async () => {
+    const token = await getToken(id, days);
+
+    await navigator.clipboard.writeText(token);
+    console.log(token);
+  };
   // to do
   return (
-    <div>
+    <div onClick={click}>
       <LinkSvg />
     </div>
   );

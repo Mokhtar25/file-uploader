@@ -34,8 +34,8 @@ export async function getDataFromToken(token: string) {
   // to do you can use -  to mange time and do not need to use any database to help
   const now = new Date();
   const expiretime = new Date(data.expireTime);
-  const expired = expiretime < now;
-  console.log(expired, expiretime.getDate(), now.getDate(), "-----------");
+  const expired = expiretime > now;
+  console.log(expired, expiretime, now);
 
   return {
     expired: expired,

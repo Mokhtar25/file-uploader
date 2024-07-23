@@ -53,7 +53,7 @@ const Files = async () => {
               </Button>
             </form>
             <DownloadButton className="" src={e.url} imageName={e.name} />
-            <LinkButton />
+            <LinkButton id={e.id} />
           </FilesLine>
         </div>
       ))}
