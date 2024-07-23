@@ -18,9 +18,15 @@ export default async function HomePage() {
 
   return (
     <main className="">
-      <SignedOut>please sign in above</SignedOut>
       <SignedIn>
-        <Files />
+        <section className="mx-8 flex items-center justify-between">
+          <div className="text-4xl font-medium">your files</div>
+          <MultiUploader />
+        </section>
+
+        <section>
+          <Files />
+        </section>
       </SignedIn>
     </main>
   );
@@ -53,8 +59,6 @@ const Files = async () => {
           </FilesLine>
         </div>
       ))}
-
-      <MultiUploader />
     </div>
   );
 };
