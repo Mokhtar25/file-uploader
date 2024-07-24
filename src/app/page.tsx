@@ -18,8 +18,8 @@ export default async function HomePage() {
   return (
     <main className="flex h-full">
       <SignedIn>
-        <section className="flex flex-col items-center justify-between border-r-2 border-black/25 px-8">
-          <div className="mt-8 text-4xl font-medium">your files</div>
+        <section className="flex flex-col items-center justify-between border-r-[1px] border-black/75 px-8">
+          <div className="mt-8 text-4xl font-thin">your files</div>
           <MultiUploader />
         </section>
         <Files />

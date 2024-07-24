@@ -1,4 +1,5 @@
 "use client";
+import { TrashIcon } from "@radix-ui/react-icons";
 import { Button } from "~/components/ui/button";
 
 import { useFormStatus } from "react-dom";
@@ -10,10 +11,11 @@ export function DeleteButton() {
     <Button
       type="submit"
       variant={"outline"}
+      size={"icon"}
       disabled={pending}
       className={pending ? "brightness-90" : ""}
     >
-      Delete
+      <TrashIcon color="red" className="size-4" />
     </Button>
   );
 }
