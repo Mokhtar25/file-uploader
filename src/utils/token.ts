@@ -43,7 +43,7 @@ export async function getDataFromToken(token: string) {
       ...data,
     };
   } catch (err) {
-    redirect("/");
+    redirect("/404");
   }
 }
 

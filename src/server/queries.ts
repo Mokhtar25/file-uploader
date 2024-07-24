@@ -6,11 +6,12 @@ import { and, eq } from "drizzle-orm";
 import { redirect } from "next/navigation";
 
 import { utapi } from "~/app/api/uploadthing/core";
+import { toast } from "sonner";
 
 export async function getUserFiles() {
   const user = auth();
 
-  if (!user.userId) throw new Error("Unauthorized");
+  if (!user.userId) redirect("/signin");
   const data = await db
     .select()
     .from(files)
@@ -21,12 +22,12 @@ export async function getUserFiles() {
 export async function getFilesById(id: number) {
   const user = auth();
 
-  if (!user.userId) throw new Error("Unauthorized");
+  if (!user.userId) redirect("/signin");
 
   const data = await db.select().from(files).where(eq(files.id, id));
-  if (data.length === 0 || !data) throw new Error("No image found");
+  if (data.length === 0 || !data) redirect("/404");
 
-  if (data[0]?.userId !== user.userId) throw new Error("Unauthorized");
+  if (data[0]?.userId !== user.userId) redirect("/signin");
 
   return data[0];
 }
@@ -34,14 +35,14 @@ export async function getFilesById(id: number) {
 export async function getFilesByIdNoAuth(id: number) {
   const data = await db.select().from(files).where(eq(files.id, id));
 
-  if (data.length === 0 || !data) throw new Error("No image found");
+  if (data.length === 0 || !data) redirect("/404");
   return data[0];
 }
 
 export async function deleteFilesByKey(id: string) {
   const user = auth();
 
-  if (!user.userId) throw new Error("Unauthorized");
+  if (!user.userId) redirect("/signin");
 
   await db
     .delete(files)
