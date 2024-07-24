@@ -55,7 +55,7 @@ export default function MultiUploader() {
   return (
     <div className="m-8 flex h-24 w-40 flex-col gap-2">
       <div
-        className="flex cursor-pointer items-center justify-center rounded bg-slate-400 p-4 text-white"
+        className="flex cursor-pointer items-center justify-center rounded bg-slate-600 p-4 text-white"
         {...getRootProps()}
       >
         <input
@@ -71,9 +71,12 @@ export default function MultiUploader() {
         )}
       </div>
       <Button
-        className={"w-full " + (uploading ? "bg-slate-400" : "bg-slate-900")}
+        className={
+          "w-full " +
+          (uploading || files.length === 0 ? "bg-slate-400" : "bg-slate-900")
+        }
         title="upload file"
-        disabled={uploading}
+        disabled={uploading || files.length === 0}
         onClick={() => {
           if (files.length === 0) return;
           setUploading(true);
