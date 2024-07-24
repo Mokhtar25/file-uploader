@@ -10,6 +10,7 @@ import { redirect } from "next/navigation";
 import { auth } from "@clerk/nextjs/server";
 
 export const dynamic = "force-dynamic";
+import { DeleteButton } from "./_comp/DeleteButton";
 //<MultiUploader />
 
 export default async function HomePage() {
@@ -48,9 +49,7 @@ const Files = async () => {
                 await deleteFilesByKey(e.key);
               }}
             >
-              <Button variant={"outline"} type="submit">
-                Delete
-              </Button>
+              <DeleteButton />
             </form>
             <DownloadButton className="" src={e.url} imageName={e.name} />
             <LinkButton id={e.id} />
