@@ -2,6 +2,7 @@
 import { clerkClient } from "@clerk/nextjs/server";
 import jwt from "jsonwebtoken";
 import { redirect } from "next/navigation";
+import { v4 as uuidv4 } from "uuid";
 
 import { env } from "~/env";
 interface TokenData {
@@ -53,7 +54,7 @@ export async function getDataFromToken(token: string) {
 export async function makeUser() {
   const client = clerkClient();
   const user = await client.users.createUser({
-    username: "sssiadsadjn",
+    username: `GuestUser${uuidv4()}`,
     password: "1234567admin",
   });
   return { username: user.username, password: "1234567admin" };

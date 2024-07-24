@@ -1,9 +1,10 @@
 "use client";
 import { useClerk } from "@clerk/nextjs";
 import { makeUser } from "../utils/token";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function GuestLog() {
+  const router = useRouter();
   const client = useClerk();
   async function make() {
     const user = await makeUser();
@@ -17,7 +18,7 @@ export default function GuestLog() {
     await client.setActive({
       session: data.createdSessionId,
     });
-    redirect("/");
+    return router.push("/");
   }
   return <div onClick={make}>GuestLog</div>;
 }
