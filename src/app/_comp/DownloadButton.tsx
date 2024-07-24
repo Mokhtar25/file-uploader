@@ -28,6 +28,7 @@ export default function DownloadButton({
 
   return (
     <Button
+      title="download"
       onClick={retrieveFileBlob}
       variant={"outline"}
       size={"icon"}

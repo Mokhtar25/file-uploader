@@ -9,6 +9,7 @@ export function DeleteButton() {
 
   return (
     <Button
+      title="delete"
       type="submit"
       variant={"outline"}
       size={"icon"}

@@ -59,6 +59,7 @@ export default function MultiUploader() {
         {...getRootProps()}
       >
         <input
+          title="selecte file to upload"
           {...getInputProps()}
           disabled={uploading}
           className="h-full w-full"
@@ -71,6 +72,7 @@ export default function MultiUploader() {
       </div>
       <Button
         className={"w-full " + (uploading ? "bg-slate-400" : "bg-slate-900")}
+        title="upload file"
         disabled={uploading}
         onClick={() => {
           if (files.length === 0) return;

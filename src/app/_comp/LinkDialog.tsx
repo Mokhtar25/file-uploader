@@ -38,7 +38,12 @@ export const LinkDialog = ({ id }: { id: number }) => {
   return (
     <Dialog onOpenChange={() => setCopied(false)}>
       <DialogTrigger asChild>
-        <Button size={"icon"} variant={"outline"} onClick={click}>
+        <Button
+          size={"icon"}
+          title="share file"
+          variant={"outline"}
+          onClick={click}
+        >
           <LinkSvg />
         </Button>
       </DialogTrigger>
