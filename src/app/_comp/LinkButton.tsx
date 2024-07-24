@@ -1,9 +1,10 @@
 "use client";
 import { Button } from "~/components/ui/button";
-
+import { DialogTrigger } from "@radix-ui/react-dialog";
 // everything you import becomes a client component
 //
 import { getToken } from "~/utils/token";
+import { LinkDialog } from "./LinkDialog";
 export default function LinkButton({ id }: { id: number }) {
   const days = 2;
   const click = async () => {
@@ -15,9 +16,12 @@ export default function LinkButton({ id }: { id: number }) {
 
   // to do
   return (
-    <Button type="submit" size={"icon"} variant={"outline"} onClick={click}>
-      <LinkSvg />
-    </Button>
+    <>
+      <Button type="submit" size={"icon"} variant={"outline"} onClick={click}>
+        <LinkSvg />
+      </Button>
+      <LinkDialog />
+    </>
   );
 }
 

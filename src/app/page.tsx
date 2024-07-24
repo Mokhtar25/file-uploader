@@ -11,6 +11,7 @@ import { auth } from "@clerk/nextjs/server";
 
 export const dynamic = "force-dynamic";
 import { DeleteButton } from "./_comp/DeleteButton";
+import { LinkDialog } from "./_comp/LinkDialog";
 //<MultiUploader />
 
 export default async function HomePage() {
@@ -52,7 +53,7 @@ const Files = async () => {
               <DeleteButton />
             </form>
             <DownloadButton className="" src={e.url} imageName={e.name} />
-            <LinkButton id={e.id} />
+            <LinkDialog id={e.id} />
           </FilesLine>
         </div>
       ))}
