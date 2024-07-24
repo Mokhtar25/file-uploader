@@ -6,7 +6,6 @@ import { and, eq } from "drizzle-orm";
 import { redirect } from "next/navigation";
 
 import { utapi } from "~/app/api/uploadthing/core";
-import { toast } from "sonner";
 
 export async function getUserFiles() {
   const user = auth();

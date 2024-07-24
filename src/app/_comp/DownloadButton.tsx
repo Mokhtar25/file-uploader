@@ -31,7 +31,7 @@ export default function DownloadButton({
       onClick={retrieveFileBlob}
       variant={"outline"}
       size={"icon"}
-      className="hover:cursor-pointer"
+      className={"hover:cursor-pointer " + className}
     >
       <DownloadSvg />
     </Button>
