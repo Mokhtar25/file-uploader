@@ -11,7 +11,6 @@ const FileShareView = async ({
   };
 }) => {
   const data = await getDataFromToken(token);
-  console.log("data from await get data from token", data);
   if (!data || data.expired === true) {
     redirect("/login");
   }
