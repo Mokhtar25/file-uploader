@@ -1,4 +1,4 @@
-import { SignIn } from "@clerk/nextjs";
+import { SignUp } from "@clerk/nextjs";
 
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
@@ -11,7 +11,7 @@ export default function page() {
   return (
     <div className="absolute inset-0 flex h-screen w-screen items-center justify-center gap-12 bg-slate-100">
       <div className="h-[460px] w-[400px]">
-        <SignIn />
+        <SignUp />
       </div>
       <div className="flex size-96 flex-col gap-12 rounded text-5xl font-bold text-slate-800 shadow-black">
         <span>Easy and secure access to your content</span>
