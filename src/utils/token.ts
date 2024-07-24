@@ -20,7 +20,6 @@ export async function getToken(fileId: number, days: number) {
     fileId,
     expireTime: expireTime,
   };
-  console.log(tokenData);
   return jwt.sign(tokenData, sec);
 }
 
@@ -28,9 +27,7 @@ export async function getDataFromToken(token: string) {
   // make those functions not async
   try {
     const data = jwt.verify(token, sec) as TokenData;
-    console.log(data, "this is data from ");
     if (!data?.fileId) {
-      console.log("token error");
       return {
         expired: true,
         ...data,
@@ -40,7 +37,6 @@ export async function getDataFromToken(token: string) {
     const now = new Date();
     const expiretime = new Date(data.expireTime);
     const expired = expiretime < now;
-    console.log(expired, expiretime.getDate(), now.getDate(), "-----------");
 
     return {
       expired: expired,
