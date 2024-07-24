@@ -102,6 +102,6 @@ dialog:modal {
   }
 }
 
-* {
+main * {
   transition: all ease-in-out 200ms;
 }

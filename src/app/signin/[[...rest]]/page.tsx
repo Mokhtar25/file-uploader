@@ -1,6 +1,8 @@
 import { SignIn, SignUp } from "@clerk/nextjs";
+
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
+import GuestLog from "~/comp/GuestLog";
 
 export default function page() {
   const user = auth();
@@ -16,6 +18,7 @@ export default function page() {
         <span className="text-3xl font-medium text-slate-500">
           Try it Today for free
         </span>
+        <GuestLog />
       </div>
     </div>
   );

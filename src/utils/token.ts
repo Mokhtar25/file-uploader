@@ -1,4 +1,5 @@
 "use server";
+import { clerkClient } from "@clerk/nextjs/server";
 import jwt from "jsonwebtoken";
 import { redirect } from "next/navigation";
 
@@ -47,4 +48,13 @@ export async function getDataFromToken(token: string) {
   } catch (err) {
     redirect("/");
   }
+}
+
+export async function makeUser() {
+  const client = clerkClient();
+  const user = await client.users.createUser({
+    username: "sssiadsadjn",
+    password: "1234567admin",
+  });
+  return { username: user.username, password: "1234567admin" };
 }
