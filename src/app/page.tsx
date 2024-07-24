@@ -1,10 +1,8 @@
-import { SignedIn, SignedOut } from "@clerk/nextjs";
+import { SignedIn } from "@clerk/nextjs";
 import { deleteFilesByKey, getUserFiles } from "~/server/queries";
 import MultiUploader from "./_comp/UploadButtonCustom";
-import { Button } from "~/components/ui/button";
 import DownloadButton from "./_comp/DownloadButton";
 import { FilesLine } from "./_comp/FilesLine";
-import LinkButton from "./_comp/LinkButton";
 import type { FilesType } from "./_comp/FilesLine";
 import { redirect } from "next/navigation";
 import { auth } from "@clerk/nextjs/server";
@@ -12,7 +10,6 @@ import { auth } from "@clerk/nextjs/server";
 export const dynamic = "force-dynamic";
 import { DeleteButton } from "./_comp/DeleteButton";
 import { LinkDialog } from "./_comp/LinkDialog";
-//<MultiUploader />
 
 export default async function HomePage() {
   const user = auth();
@@ -25,7 +22,6 @@ export default async function HomePage() {
           <div className="mt-8 text-4xl font-medium">your files</div>
           <MultiUploader />
         </section>
-
         <Files />
       </SignedIn>
     </main>
@@ -65,29 +61,3 @@ const Files = async () => {
     </div>
   );
 };
-
-//<div key={e.id} className="flex flex-col">
-//<Link href={`/img/${e.id}`} key={e.id}>
-//<div className="flex size-96 flex-col">
-//<img src={e.url} alt={e.name} className="object-contain" />
-//<span>{e.name}</span>
-//</div>
-//</Link>
-//<form
-//action={async () => {
-//    "use server";
-//    await deleteFilesByKey(e.key);
-//    console.log("done");
-//}}
-//>
-//<Button variant={"destructive"} type="submit">
-//{" "}
-//Delete
-//</Button>
-//</form>
-//<DownloadButton
-//className="h-12 w-28"
-//src={e.url}
-//imageName={e.name}
-///>
-//</div>
