@@ -1,6 +1,6 @@
 import { getFilesById, getFilesByIdNoAuth } from "~/server/queries";
 
-import PdfView from "./PdfView";
+//import PdfView from "./PdfView";
 export default async function FullPageFile({
   id,
   share,

@@ -23,6 +23,7 @@ export async function getToken(fileId: number, days: number) {
 }
 
 export async function getDataFromToken(token: string) {
+  // make those functions not async
   try {
     const data = jwt.verify(token, sec) as TokenData;
     console.log(data, "this is data from ");

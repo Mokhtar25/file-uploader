@@ -1,6 +1,7 @@
 "use client";
 import { Button } from "~/components/ui/button";
 
+// everything you import becomes a client component
 import { getToken } from "~/utils/token";
 export default function LinkButton({ id }: { id: number }) {
   const days = 2;

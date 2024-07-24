@@ -1,4 +1,5 @@
 "use client";
+
 import { useDropzone } from "@uploadthing/react";
 import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
@@ -11,6 +12,7 @@ import { Button } from "~/components/ui/button";
 
 export default function MultiUploader() {
   const router = useRouter();
+
   const [files, setFiles] = useState<File[]>([]);
   const [uploading, setUploading] = useState(false);
   const onDrop = useCallback((acceptedFiles: File[]) => {
@@ -32,7 +34,6 @@ export default function MultiUploader() {
       toast.error("an error has occurred");
     },
     onUploadBegin: () => {
-      setUploading(true);
       toast(<FileUp />, {
         duration: 90000,
         id: "upload-start",
@@ -71,7 +72,11 @@ export default function MultiUploader() {
       <Button
         className={"w-full " + (uploading ? "bg-slate-400" : "bg-slate-900")}
         disabled={uploading}
-        onClick={() => startUpload(files)}
+        onClick={() => {
+          if (files.length === 0) return;
+          setUploading(true);
+          return startUpload(files);
+        }}
       >
         {uploading ? "Uploading.." : "Upload"}
       </Button>
@@ -128,7 +133,7 @@ const LoadingSpinner = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <g className="spinner_V8m1">
-        <circle cx="12" cy="12" r="9.5" fill="none" stroke-width="3"></circle>
+        <circle cx="12" cy="12" r="9.5" fill="none" strokeWidth="3"></circle>
       </g>
     </svg>
   );
