@@ -36,7 +36,7 @@ const objectWithoutKey = (e: FilesType) => {
 const Files = async () => {
   const data = await getUserFiles();
   return (
-    <div className="flex w-full flex-grow flex-col overflow-x-clip bg-slate-200 transition-all">
+    <div className="flex w-full flex-grow flex-col overflow-x-clip overflow-y-scroll bg-slate-200 transition-all">
       {data.map((e) => (
         <div key={e.key} className="">
           <FilesLine {...objectWithoutKey(e)}>

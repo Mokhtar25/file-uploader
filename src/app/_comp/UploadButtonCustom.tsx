@@ -27,11 +27,22 @@ export default function MultiUploader() {
       toast("Upload Complete");
       setUploading(false);
     },
-    onUploadError: () => {
+    onUploadError: (error) => {
       toast.dismiss("upload-start");
-
+      if (error.message.includes("FileSizeMismatch")) {
+        toast.error(
+          "An error has occurred, File is too big. Max Upload size is 4MB",
+        );
+      } else if (error.message.includes("FileCountMismatch")) {
+        toast.error(
+          "An error has occurred, too many Files. Max Upload count is 4 Files",
+        );
+      } else if (error.message.includes("Rate limit exceeded")) {
+        toast.error(
+          "An error has occurred, Rate Limit exceeded. try again later",
+        );
+      }
       setUploading(false);
-      toast.error("an error has occurred");
     },
     onUploadBegin: () => {
       toast(<FileUp />, {

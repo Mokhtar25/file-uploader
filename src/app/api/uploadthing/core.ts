@@ -4,16 +4,24 @@ import { UploadThingError } from "uploadthing/server";
 import { db } from "~/server/db";
 import { files } from "~/server/db/schema";
 import { ratelimit } from "~/server/ratelimit";
+import * as z from "zod";
 
 import { UTApi } from "uploadthing/server";
-const f = createUploadthing();
+const f = createUploadthing({
+  errorFormatter: (err) => {
+    return {
+      message: err.message,
+      zodError: err.cause instanceof z.ZodError ? err.cause.flatten() : null,
+    };
+  },
+});
 
 // FileRouter for your app, can contain multiple FileRoutes
 export const ourFileRouter = {
   // Define as many FileRoutes as you like, each with a unique routeSlug
   imageUploader: f({
     image: { maxFileSize: "4MB", maxFileCount: 4 },
-    pdf: { maxFileSize: "2MB", maxFileCount: 4 },
+    pdf: { maxFileSize: "4MB", maxFileCount: 4 },
   })
     // Set permissions and file types for this FileRoute
     .middleware(async () => {
@@ -25,7 +33,7 @@ export const ourFileRouter = {
 
       const { success } = await ratelimit.limit(user.userId);
 
-      if (!success) throw new Error("Rate limit exceeded");
+      if (!success) throw new UploadThingError("Rate limit exceeded");
 
       // Whatever is returned here is accessible in onUploadComplete as `metadata`
       return { userId: user.userId };

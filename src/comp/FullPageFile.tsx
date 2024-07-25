@@ -9,7 +9,7 @@ export default async function FullPageFile({
   share?: boolean;
 }) {
   const image = share ? await getFilesByIdNoAuth(id) : await getFilesById(id);
-  const ImageExt = [".jpeg", ".jpg", ".png", "avif"];
+  const ImageExt = [".jpeg", ".jpg", ".png", "avif", ".webp"];
 
   const fileIsImage = ImageExt.some((e) => image?.name.endsWith(e));
 
