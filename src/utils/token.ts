@@ -11,24 +11,24 @@ interface TokenData {
   expireTime: Date;
 }
 
-const sec = env.SECRET;
 export async function getToken(fileId: number, days: number) {
   // to do
 
   if (!auth().userId) redirect("/signin");
+  // also check if the same user is owner to the picture
   const expireTime = new Date();
   expireTime.setDate(expireTime.getDate() + days);
   const tokenData: TokenData = {
     fileId,
     expireTime: expireTime,
   };
-  return jwt.sign(tokenData, sec);
+  return jwt.sign(tokenData, env.SECRET);
 }
 
 export async function getDataFromToken(token: string) {
   // make those functions not async
   try {
-    const data = jwt.verify(token, sec) as TokenData;
+    const data = jwt.verify(token, env.SECRET) as TokenData;
     if (!data?.fileId) {
       return {
         expired: true,
@@ -45,6 +45,7 @@ export async function getDataFromToken(token: string) {
       ...data,
     };
   } catch (err) {
+    // redirect actually throws an error, watch out when using inside a try catch block
     redirect("/404");
   }
 }
