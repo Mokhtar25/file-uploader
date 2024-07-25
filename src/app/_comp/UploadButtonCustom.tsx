@@ -101,17 +101,6 @@ export default function MultiUploader() {
     </div>
   );
 }
-//<div {...getRootProps()}>
-//<div className="bg-green-400">
-//<input {...getInputProps()} className="bg-blue-500" />
-//{files.length > 0 && (
-//    <button className="bg-red-400" onClick={() => startUpload(files)}>
-//    Upload {files.length} files
-//    </button>
-//)}
-//</div>
-//Drop files here!
-//</div>
 
 const FileUp = () => {
   return (

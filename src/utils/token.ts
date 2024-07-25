@@ -3,6 +3,7 @@ import { clerkClient } from "@clerk/nextjs/server";
 import jwt from "jsonwebtoken";
 import { redirect } from "next/navigation";
 import { v4 as uuidv4 } from "uuid";
+import { auth } from "@clerk/nextjs/server";
 
 import { env } from "~/env";
 interface TokenData {
@@ -14,6 +15,7 @@ const sec = env.SECRET;
 export async function getToken(fileId: number, days: number) {
   // to do
 
+  if (!auth().userId) redirect("/signin");
   const expireTime = new Date();
   expireTime.setDate(expireTime.getDate() + days);
   const tokenData: TokenData = {

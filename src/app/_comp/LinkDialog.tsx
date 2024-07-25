@@ -21,9 +21,10 @@ export const LinkDialog = ({ id }: { id: number }) => {
   const [copied, setCopied] = useState(false);
   const [token, setToken] = useState("");
   const days = 2;
+  // you can make this into a server action with from submit and use form data
   const click = async () => {
     const token = await getToken(id, days);
-    // Handel rejection in here vNotAllowedError
+    // Handel rejection in here NotAllowedError
 
     setToken(window.location.href + "share/" + token);
 
