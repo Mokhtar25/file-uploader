@@ -9,6 +9,8 @@ selecting images
 downloading 
 sharing a file with someone with a timed token
 
+add ability do download files from shared 
+
 
 handel the error correctly 
 

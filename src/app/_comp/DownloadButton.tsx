@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { Button } from "~/components/ui/button";
 
 interface PropsDownloadButton {
@@ -32,7 +31,7 @@ export default function DownloadButton({
       onClick={retrieveFileBlob}
       variant={"outline"}
       size={"icon"}
-      className={"hover:cursor-pointer " + className}
+      className={"hover:cursor-pointer active:brightness-125 " + className}
     >
       <DownloadSvg />
     </Button>

@@ -72,7 +72,7 @@ export default function MultiUploader() {
       </div>
       <Button
         className={
-          "w-full " +
+          "w-full active:brightness-125 " +
           (uploading || files.length === 0 ? "bg-slate-400" : "bg-slate-900")
         }
         title="upload file"
