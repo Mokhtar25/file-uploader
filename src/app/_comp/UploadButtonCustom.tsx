@@ -41,6 +41,8 @@ export default function MultiUploader() {
         toast.error(
           "An error has occurred, Rate Limit exceeded. try again later",
         );
+      } else {
+        toast.error("An error has occurred");
       }
       setUploading(false);
     },
