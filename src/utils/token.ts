@@ -52,6 +52,7 @@ export async function getDataFromToken(token: string) {
 
 export async function makeUser() {
   const client = clerkClient();
+  // you can also make a unique password for each user
   const user = await client.users.createUser({
     username: `GuestUser${uuidv4()}`,
     password: "1234567admin",
