@@ -27,7 +27,7 @@ export default function GuestLog() {
 
       return router.push("/");
     } catch (error) {
-      toast("an error has occurred");
+      toast.error("an error has occurred");
       setLoading(false);
     }
   }
