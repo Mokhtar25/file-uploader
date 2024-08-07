@@ -11,6 +11,7 @@ import { Toaster } from "~/components/ui/sonner";
 
 import { extractRouterConfig } from "uploadthing/server";
 import { ourFileRouter } from "./api/uploadthing/core";
+import { Suspense } from "react";
 export const metadata: Metadata = {
   title: "File-uploader",
   description: "made for the Odin Project",
@@ -35,8 +36,9 @@ export default function RootLayout({
         />
         <body>
           <div className="grid h-screen grid-rows-[auto,1fr]">
-            <TopNav />
-
+            <Suspense fallback=<TopNav fallback />>
+              <TopNav />
+            </Suspense>
             <main className="overflow-y-scroll">{children}</main>
           </div>
           {model}

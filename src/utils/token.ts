@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from "uuid";
 import { auth } from "@clerk/nextjs/server";
 
 import { env } from "~/env";
+import { Console } from "console";
 interface TokenData {
   fileId: number;
   expireTime: Date;
@@ -53,9 +54,20 @@ export async function getDataFromToken(token: string) {
 export async function makeUser() {
   const client = clerkClient();
   // you can also make a unique password for each user
-  const user = await client.users.createUser({
-    username: `GuestUser${uuidv4()}`,
-    password: "1234567admin",
-  });
-  return { username: user.username, password: "1234567admin" };
+  // clean the user or create it if not made
+  try {
+    const user = await client.users.createUser({
+      username: `GuestUser${uuidv4()}`,
+      password: "1234567admin",
+    });
+
+    return { username: user.username, password: "1234567admin" };
+  } catch (err) {
+    console.log("error", err);
+
+    return {
+      username: "user_2jscFnI0oJrrXjKDlOHZrutbvAU",
+      password: "1234567admin",
+    };
+  }
 }
