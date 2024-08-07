@@ -4,9 +4,11 @@ import jwt from "jsonwebtoken";
 import { redirect } from "next/navigation";
 import { v4 as uuidv4 } from "uuid";
 import { auth } from "@clerk/nextjs/server";
+import { db } from "~/server/db";
+import { files } from "~/server/db/schema";
+import { eq } from "drizzle-orm";
 
 import { env } from "~/env";
-import { Console } from "console";
 interface TokenData {
   fileId: number;
   expireTime: Date;
@@ -64,9 +66,12 @@ export async function makeUser() {
     return { username: user.username, password: "1234567admin" };
   } catch (err) {
     console.log("error", err);
+    const userDB = "user_2kKP0aRbKHUY320dvOr0vVk2yyy";
+    const userId = "GuestUser";
+    await db.delete(files).where(eq(files.userId, userDB));
 
     return {
-      username: "user_2jscFnI0oJrrXjKDlOHZrutbvAU",
+      username: userId,
       password: "1234567admin",
     };
   }

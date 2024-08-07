@@ -6,6 +6,7 @@ import { and, eq } from "drizzle-orm";
 import { redirect } from "next/navigation";
 
 import { utapi } from "~/app/api/uploadthing/core";
+import { revalidatePath } from "next/cache";
 
 export async function getUserFiles() {
   const user = auth();
@@ -49,5 +50,5 @@ export async function deleteFilesByKey(id: string) {
 
   await utapi.deleteFiles(id);
 
-  redirect("/");
+  revalidatePath("/");
 }
