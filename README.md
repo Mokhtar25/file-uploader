@@ -8,7 +8,7 @@ File Uploader is a web application built with the Create T3 app and Next.js. It 
 
 This project leverages the following technologies:
 
-1. **Next.js**: A React framework for production.
+1. **Next.js**: A meta React framework.
 2. **Tailwind CSS**: A utility-first CSS framework for styling.
 3. **UploadThing**: A service for file storage.
 4. **ClerkAuth**: Authentication and user management.
