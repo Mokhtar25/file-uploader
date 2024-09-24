@@ -16,9 +16,9 @@ export default async function HomePage() {
   if (!user.userId) redirect("/signin");
 
   return (
-    <main className="flex h-full">
+    <main className="flex h-full flex-col">
       <SignedIn>
-        <section className="flex flex-col items-center justify-between border-r-[1px] border-black/75 px-8">
+        <section className="flex flex-row items-center justify-between border-r-[1px] border-black/75 px-8">
           <div className="mt-8 text-4xl font-thin">your files</div>
           <MultiUploader />
         </section>

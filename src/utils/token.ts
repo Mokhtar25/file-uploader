@@ -15,8 +15,6 @@ interface TokenData {
 }
 
 export async function getToken(fileId: number, days: number) {
-  // to do
-
   if (!auth().userId) redirect("/signin");
   // also check if the same user is owner to the picture
   const expireTime = new Date();

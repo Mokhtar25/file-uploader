@@ -20,7 +20,7 @@ export const FilesLine = async ({
   children,
 }: PropsLine) => {
   return (
-    <div className="grid w-full grid-cols-[4fr,2fr,1fr,1fr,1fr] items-center gap-4 border-y-[1px] border-black/35 bg-white px-8 py-2 hover:bg-slate-200">
+    <div className="flex w-full flex-wrap items-center gap-4 border-y-[1px] border-black/35 bg-white px-8 py-2 hover:bg-slate-200 lg:grid lg:grid-cols-[4fr,2fr,1fr,1fr,1fr]">
       <Link
         href={`/img/${id}`}
         className="flex items-center gap-2 overflow-clip"
